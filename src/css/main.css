@@ -22,6 +22,9 @@ header.navbar{height:48px;background:#003366;text-shadow:0 -1px 0 rgba(0,0,0,.15
 .note-item h3{white-space: nowrap; width: 100%; overflow: hidden;text-overflow: ellipsis;}
 .n-bar{position:absolute;bottom:0;left:0;right:0;height:50px;background:#003366;opacity:0;
 	-moz-transition:opacity 0.5s ease-in-out;-webkit-transition:ease-in-out 0.5s;transition:opacity 0.5s ease-in-out;
-	line-height:50px;text-align:center;color:white;cursor:pointer;border-bottom-left-radius:6px;border-bottom-right-radius:6px;
+	line-height:50px;text-align:left;color:white;cursor:pointer;border-bottom-left-radius:6px;border-bottom-right-radius:6px;
 }
+.n-bar span{margin:0 10px;}
 .note-itemc:hover .n-bar{opacity:0.7;}
+
+.edit-reminder{;min-height:50px;background: rgba(0,51,102,0.7)}

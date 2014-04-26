@@ -116,20 +116,24 @@ define(["jquery","underscore","backbone","localstorage","bootstrap"],function($,
   // 单个笔记视图
 	jw.note.sm = Backbone.View.extend({
 		className:'note-item col-md-4',
+    events:{
+      // 'click .bar-remind-btn':'editReminder'
+    },
 		initialize:function(){
 			_.bindAll( this, 'edit' ,'remove', 'render' );
 			this.model.on('destroy', this.remove )
         .on('change',this.render);
 		},
 		template:function(){
-			var template = '<div class="note-itemc"><h3 class="text-overflow"><%=title%></h3><p><%=content%></p><div class="n-bar"><span class="glyphicon glyphicon-trash"</span><span class="glyphicon glyphicon-picture"</span></div></div>';
+			var template = '<div class="note-itemc"><h3 class="text-overflow"><%=title%></h3><p><%=content%></p><div class="n-bar"><span class="bar-remind-btn glyphicon glyphicon-time" data-placement="bottom" data-original-title="Remind me"></span><span class="glyphicon glyphicon-picture" data-placement="bottom" data-original-title="Add image"></span><span class="glyphicon glyphicon-list" data-placement="bottom" data-original-title="Show checkbox"></span><span class="glyphicon glyphicon-trash" data-placement="bottom" data-original-title="Remove note"></span></div></div>';
 			return template;
 		},
 		render:function(){
       this.$el.empty();
 			this.$el.append( _.template( this.template() , this.model.toJSON() ) );
 			if(!this.model.isNew()) this.$el.attr('id',this.model.id);
-			this.$el.click( this.edit );
+			this.$el.find('h3,p').click( this.edit );
+      this.$el.find('.glyphicon').tooltip()
 			return this;
 		},
 		edit:function(){
@@ -139,7 +143,11 @@ define(["jquery","underscore","backbone","localstorage","bootstrap"],function($,
 		},
 		remove:function(){
 			this.$el.remove();
-		}
+		},
+    editReminder:function(){
+      this.$el.addClass('editing');
+      this.$el.append('<div class="edit-reminder"></div>')
+    }
 	});
 
 	var noteapp = Backbone.View.extend({
