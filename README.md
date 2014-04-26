@@ -8,6 +8,7 @@ NOTE: This code is currently in an experimental state. I don't recommend using i
 
 ## Feature Overview
 
+- Cloning basic Google Keep features.
 - Has a simple API consisting of ONE route and ONE controller to manage notes.
 - Has view templates that look just like Google Keep Application.
 - Users can save, edit and delete notes.
