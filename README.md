@@ -4,7 +4,7 @@ Notepad: A Backbone Reference Application
 
 NOTE: This code is currently in an experimental state. I don't recommend using it as guidance for how to build Backbone apps at the moment. If you would like to see a better reference code base, check out the version of [Todomvc](https://github.com/tastejs/todomvc)
 
-![alt tag](https://raw.github.com/MarlinDoo/notepad/blob/master/src/images/screenshot.png)
+![alt tag](https://raw.github.com/MarlinDoo/notepad/master/src/images/screenshot.png)
 
 ## Feature Overview
 
