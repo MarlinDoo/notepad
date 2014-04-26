@@ -1,8 +1,5 @@
 /**
- * Joywok IM 系统基本输入框
- * @params 
- *		tip:默认提醒文字 
- *		style:设置input的高度(0为29px 1为35px)
+ * notepad app
  */
 define(["jquery","underscore","backbone","localstorage","bootstrap"],function($,_und,backbone,localstorage,bootstrap){
 	"use strict";
@@ -10,14 +7,14 @@ define(["jquery","underscore","backbone","localstorage","bootstrap"],function($,
 	var jw = {};
   
   jw.note = {};
-  // 普通记事本
-  jw.note.m = {};
 
+  jw.note.m = {};
+  // base 
   jw.note.m.base = Backbone.Model.extend({
   	defaults:{title:'',content:''}
   });
 
-  // TODOs 记事本
+  // TODOs 
   jw.note.m.todo = jw.note.m.base.extend({
 
   });
@@ -46,7 +43,6 @@ define(["jquery","underscore","backbone","localstorage","bootstrap"],function($,
   	},
   	initialize:function(){
   		_.bindAll( this, 'check' );
-      // if(!this.model) this.model = new jw.note.m;
   		if(!this.model) this.model = new jw.note.m.base;
 
       var self = this;
@@ -61,8 +57,8 @@ define(["jquery","underscore","backbone","localstorage","bootstrap"],function($,
   		var template = '<div class="modal-dialog">\
     <div class="modal-content">\
       <div class="modal-body">\
-        <input class="form-control" id="focusedInput" type="text" value="<%=title%>" placeholder="标题" />\
-        <textarea class="form-control" rows="10" placeholder="记事"><%=content%></textarea>\
+        <input class="form-control" id="focusedInput" type="text" value="<%=title%>" placeholder="Title" />\
+        <textarea class="form-control" rows="10" placeholder="Content"><%=content%></textarea>\
       </div>\
       <div class="modal-footer">\
         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>\
@@ -126,7 +122,7 @@ define(["jquery","underscore","backbone","localstorage","bootstrap"],function($,
         .on('change',this.render);
 		},
 		template:function(){
-			var template = '<div class="note-itemc"><h3 class="text-overflow"><%=title%></h3><p><%=content%></p><div class="n-bar">Tool Bar<span class="glyphicon glyphicon-trash"</span><span class="glyphicon glyphicon-picture"</span></div></div>';
+			var template = '<div class="note-itemc"><h3 class="text-overflow"><%=title%></h3><p><%=content%></p><div class="n-bar"><span class="glyphicon glyphicon-trash"</span><span class="glyphicon glyphicon-picture"</span></div></div>';
 			return template;
 		},
 		render:function(){
@@ -158,7 +154,7 @@ define(["jquery","underscore","backbone","localstorage","bootstrap"],function($,
 			this.collection.fetch();
 		},
 		render:function(){
-      this.$el.before('<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner"><nav class="note-bar"><ul class="nav navbar-nav"><li><a class="category-btn"><span class="glyphicon glyphicon-align-justify"></span><span>记事</span></a></li></ul></nav></header><div class="note-new"><button id="addnew-btn" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 添加新记事</button></div>');
+      this.$el.before('<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner"><nav class="note-bar"><ul class="nav navbar-nav"><li><a class="category-btn"><span class="glyphicon glyphicon-align-justify"></span><span>Notes</span></a></li></ul></nav></header><div class="note-new"><button id="addnew-btn" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New Note</button></div>');
       this.$el.append('<div class="n-container"></div>');
       $('#addnew-btn').click( this.addNew );
 		},
